@@ -4,7 +4,7 @@ const router = require('express').Router()
 
 // follows
 router
-    .route('/follows/:id')
+    .route('/follows/:followsId')
     .get((req, res, next) => {
         // to get all follows
         res.status(200).send({ Message: "Your follows" });
@@ -13,7 +13,7 @@ router
         // for only unfollowing 
     })
 router
-    .route('/followers/:id')
+    .route('/followers/:followersId')
     .get((req, res, next) => {
         // to get all followers
     })
@@ -21,7 +21,7 @@ router
         // for only following or delete followers list
     })
 router
-    .route('profile/:id')
+    .route('profile/:profileId')
 
     .get((req, res, next) => {
         // get only one profile if he is owner of this profile give it access to change his/her profile

@@ -3,7 +3,7 @@
 const router = require('express').Router()
 
 router
-    .route('profile/:id')
+    .route('profile/:profileId')
 
     .get((req, res, next) => {
         // get only one profile if he is owner of this profile give it access to change his/her profile
