@@ -1,10 +1,7 @@
 const router = require('express').Router()
 
 
-router.get('/', (req, res) => {
-    // router code here
-    res.status(200).send({ Message: 'Content route' });
-});
-
+router
+.route('/')
 
 module.exports = router

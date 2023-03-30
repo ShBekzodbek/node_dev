@@ -2,21 +2,23 @@
 
 const router = require('express').Router()
 
-
-router.get('/', (req, res) => {
-    // router code here
-    res.status(200).send({ Message: 'User route' });
-});
-
 // follows
 router
     .route('/follows/:id')
     .get((req, res, next) => {
-        // to get all follows 
+        // to get all follows
         res.status(200).send({ Message: "Your follows" });
     })
     .put((req, res, next) => {
-        // for only unfollowing
+        // for only unfollowing 
+    })
+router
+    .route('/followers/:id')
+    .get((req, res, next) => {
+        // to get all followers
+    })
+    .put((req, res, next) => {
+        // for only following or delete followers list
     })
 router
     .route('profile/:id')
@@ -31,7 +33,6 @@ router
     .delete((req, res, next) => {
         // only owner can delete something from her / his profile like image , link , and so on
     });
-
 
 
 module.exports = router
