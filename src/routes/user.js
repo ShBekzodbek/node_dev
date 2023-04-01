@@ -1,7 +1,8 @@
-
+const User = require('../controllers/user');
 
 const router = require('express').Router()
 
+router.post('/signup', User.signup);
 // follows
 router
     .route('/follows/:followsId')

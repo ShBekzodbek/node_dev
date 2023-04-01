@@ -30,7 +30,6 @@ Comment.belongsTo(User);
 Comment.belongsTo(Content);
 
 
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(morgan('dev'));

@@ -3,7 +3,7 @@ const app = require('./src/app.js');
 const db = require('./src/models/index.js');
 
 db.check();
-db.syncDB();
+// db.syncDB();
 
 require('dotenv').config();
 const server = createServer(app);
