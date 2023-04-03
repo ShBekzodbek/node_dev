@@ -22,8 +22,8 @@ const signupSchema = Joi
             .min(5)
             .max(15)
     })
-const signUpValidator = (payload) => {
+const signUpInputValidator = (payload) => {
     return signupSchema.validate(payload);
 }
 
-module.exports = signUpValidator;
+module.exports = signUpInputValidator;

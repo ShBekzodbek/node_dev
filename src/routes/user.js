@@ -1,18 +1,18 @@
 const User = require('../controllers/user');
+const authenticateToken = require('../middlewares/auth/authenticateToken');
 
 const router = require('express').Router()
 
 router.post('/signup', User.signup);
 // follows
 router
-    .route('/follows/:followsId')
-    .get((req, res, next) => {
+    .get('/follows', authenticateToken, (req, res, next) => {
         // to get all follows
         res.status(200).send({ Message: "Your follows" });
     })
-    .put((req, res, next) => {
-        // for only unfollowing 
-    })
+router.put('/follows/:followsId', (req, res, next) => {
+    // for only unfollowing 
+})
 router
     .route('/followers/:followersId')
     .get((req, res, next) => {
