@@ -44,21 +44,23 @@ module.exports = class UserController {
     };
     static async signin(req, res, next) {
         try {
-
-            const { error, value } = signInInputValidator(req.body);
-            if (error) {
-                return res.status(400).send(`Inputs not valid: ${error.details[0].message}`)
+            if (req.body.constructor === Object && Object.keys(req.body).length === 0) {
+                return res.status(400).send(`Inputs not valid: Input must have `)
+            }
+            const { error } = signInInputValidator(req.body);
+            if (error || !req.body.email || !req.body.password) {
+                return res.status(400).send(`Inputs not valid: ${error}`)
             }
             const user = await User.findOne({
                 where:
                 {
-                    email: value.email
+                    email: req.body.email
                 }
             });
             if (!user) {
                 return res.status(401).send({ message: 'User not found' });
             }
-            if (user.password != value.password || user.email != value.email) {
+            if (user.password != req.body.password || user.email != req.body.email) {
                 return res.status(401).send({ message: 'Email or password  invalid' });
             } else {
                 req.session.user = user;
@@ -74,9 +76,15 @@ module.exports = class UserController {
         }
 
     };
-    // static async logout(req, res, next) {
-
-    // }; static async signup(req, res, next) {
+    static async logout(req, res, next) {
+        try {
+            req.session.user.destroy();
+            return res.redirect('/');
+        } catch (err) {
+            console.log("Error in logout endpoint" + err)
+        }
+    };
+    // static async signup(req, res, next) {
 
     // }; static async signup(req, res, next) {
 
