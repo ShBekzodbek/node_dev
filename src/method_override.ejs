@@ -1,0 +1,15 @@
+<!-- @format -->
+
+// create a form with a hidden input field
+<form action="/user?_method=PUT" method="POST">
+  <input type="hidden" name="_method" value="PUT" />
+  <!-- other input fields -->
+  <button type="submit">Update user</button>
+</form>
+
+// create a form with a hidden input field for DELETE method
+<form action="/user?_method=DELETE" method="POST">
+  <input type="hidden" name="_method" value="DELETE" />
+  <!-- other input fields -->
+  <button type="submit">Delete user</button>
+</form>
